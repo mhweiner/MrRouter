@@ -30,6 +30,17 @@ router.go2('Task', {id: 123}, true);
 // Route by reading from page hash and finding a match in Router.routes.
 router.route();
 
+// Register a callback when hash changes
+router.navigateAwayCallback = function(){
+  return confirm('Are you sure you want to leave?');
+};
+
+// Un-register callback
+router.navigateAwayCallback = null;
+
+// Get route object from hash, if match is found
+router.getObjFromHash('task/123'); //returns {id: 'Task', params: {id: 123}}
+
 ```
 
 ## Installation

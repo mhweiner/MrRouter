@@ -83,6 +83,10 @@ window.Router = (function(match){
 				return;
 			}
 
+			if(navigateAwayCallback && typeof navigateAwayCallback != 'function'){
+				throw 'navigateAwayCallback must be a function';
+			}
+
 			if(navigateAwayCallback){
 				if(!navigateAwayCallback()){
 					//halt if callback returns false, and go back to the previous route
@@ -145,31 +149,12 @@ window.Router = (function(match){
 		window.onhashchange = onHashChange;
 	}
 
-	/**
-	 * Registers a callback to be called when navigating to a different route. If the callback DOESNT return true,
-	 * the route change is cancelled. This callback must be unregistered with unregisterNavigateAwayCallback() when
-	 * no longer needed.
-	 * @param callback
-	 */
-	function registerNavigateAwayCallback(callback){
-		navigateAwayCallback = callback;
-	}
-
-	/**
-	 * Unregisters the callback.
-	 */
-	function unregisterNavigateAwayCallback(){
-		navigateAwayCallback = null;
-	}
-
 	init();
 
 	return {
 		route:route,
 		status:status,
 		go2:go2,
-		registerNavigateAwayCallback: registerNavigateAwayCallback,
-		unregisterNavigateAwayCallback: unregisterNavigateAwayCallback,
 		getObjFromHash: _getObjFromHash,
 		routes: routes,
 		controllers: controllers,
