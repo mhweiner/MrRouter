@@ -51,7 +51,7 @@ window.Router = (function(match){
 	 * @returns {*}
 	 * @private
 	 */
-	function _getObjFromHash(hash) {
+	function getObjFromHash(hash) {
 		if (!hash) {
 			return false;
 		}
@@ -74,7 +74,7 @@ window.Router = (function(match){
 	 */
 	function onHashChange() {
 
-		var o = _getObjFromHash(getHash());
+		var o = getObjFromHash(getHash());
 		if (o) {
 
 			if(ignoreHashChange){
@@ -108,7 +108,7 @@ window.Router = (function(match){
 	 * @return {*}
 	 */
 	function status() {
-		return _getObjFromHash(getHash());
+		return getObjFromHash(getHash());
 	}
 
 	/**
@@ -155,7 +155,7 @@ window.Router = (function(match){
 		route:route,
 		status:status,
 		go2:go2,
-		getObjFromHash: _getObjFromHash,
+		getObjFromHash: getObjFromHash,
 		routes: routes,
 		controllers: controllers,
 		navigateAwayCallback: navigateAwayCallback
