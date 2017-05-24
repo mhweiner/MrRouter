@@ -58,6 +58,14 @@ router.route();
 
 ## API
 
+### route()
+### status()
+### go2()
+### getObjFromHash()
+### routes
+### controllers
+### navigateAwayCallback
+
 ## Route matching
 
 For more details on how we match routes to/from hashes, please [see the documentation for RouteMatcher](https://github.com/cowboy/javascript-route-matcher).
