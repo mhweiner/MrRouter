@@ -74,7 +74,7 @@ Changes the hash, which then is handled by onHashChange, which calls the control
 
 ### getObjFromHash(hash {string})
 
-Returns an object with the id and params object, ex: `{id: 'blah', params:{}}` from a hash string. Returns false if no
+Given the specified hash string, if a match was found in Router.routes, it returns an object, ex: `{id: 'blah', params:{}}`. Returns false if no
 match was found.
 
 ## Properities
