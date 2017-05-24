@@ -1,15 +1,16 @@
-window.router = (function(match){
+/* router.js - Please route responsibly. v1.0.1
+ * http://github.com/mhweiner/router.js
+ * Copyright (c) 2017 Marc H. Weiner; Licensed MIT, GPL */
+window.Router = (function(match){
 
 	if(typeof match !== 'function'){
 		throw 'routeMatcher is not loaded or defined.';
 	}
-
-	var _my = {
-		navigateAwayCallback: null,
-		ignoreHashChange: false,
-		controllers: {},
-		routes: []
-	};
+	
+	var navigateAwayCallback = null,
+		ignoreHashChange = false,
+		controllers = {},
+		routes = [];
 
 	function getHash(){
 		if (window.location.hash) {
@@ -20,8 +21,8 @@ window.router = (function(match){
 	}
 
 	function _callControllerFromObj(id, params) {
-		if (_my.controllers[id]) {
-			_my.controllers[id].call(undefined, params);
+		if (controllers[id]) {
+			controllers[id].call(undefined, params);
 		} else {
 			throw("router: controller[" + id + '] does not exist.');
 		}
@@ -35,7 +36,7 @@ window.router = (function(match){
 	 * @private
 	 */
 	function _getHashFromObj(id, params) {
-		var hash = _my.routes[id];
+		var hash = routes[id];
 		if (!hash) {
 			throw("Undefined route '" + id + "'");
 		}
@@ -55,9 +56,9 @@ window.router = (function(match){
 			return false;
 		}
 
-		for (var k in _my.routes) {
-			if (_my.routes.hasOwnProperty(k)) {
-				var rm = match(_my.routes[k]);
+		for (var k in routes) {
+			if (routes.hasOwnProperty(k)) {
+				var rm = match(routes[k]);
 				var p = rm.parse(hash);
 				if (p !== null) {
 					return {id:k, params:p};
@@ -76,17 +77,17 @@ window.router = (function(match){
 		var o = _getObjFromHash(getHash());
 		if (o) {
 
-			if(_my.ignoreHashChange){
+			if(ignoreHashChange){
 				//ignore just once, then reset.
-				_my.ignoreHashChange = false;
+				ignoreHashChange = false;
 				return;
 			}
 
-			if(_my.navigateAwayCallback){
-				if(!_my.navigateAwayCallback()){
+			if(navigateAwayCallback){
+				if(!navigateAwayCallback()){
 					//halt if callback returns false, and go back to the previous route
-					_my.ignoreHashChange = true;
-					window.history.go(-1)
+					ignoreHashChange = true;
+					window.history.go(-1);
 					return;
 				}
 			}
@@ -115,7 +116,7 @@ window.router = (function(match){
 	function go2(id, params, doNotRoute) {
 
 		var new_hash = _getHashFromObj(id, params || {});
-		_my.ignoreHashChange = doNotRoute;
+		ignoreHashChange = doNotRoute;
 
 		//if the hashes are the same, just ignore.
 		if(new_hash == window.location.hash.replace('#','')){
@@ -151,14 +152,14 @@ window.router = (function(match){
 	 * @param callback
 	 */
 	function registerNavigateAwayCallback(callback){
-		_my.navigateAwayCallback = callback;
+		navigateAwayCallback = callback;
 	}
 
 	/**
 	 * Unregisters the callback.
 	 */
 	function unregisterNavigateAwayCallback(){
-		_my.navigateAwayCallback = null;
+		navigateAwayCallback = null;
 	}
 
 	init();
@@ -170,7 +171,8 @@ window.router = (function(match){
 		registerNavigateAwayCallback: registerNavigateAwayCallback,
 		unregisterNavigateAwayCallback: unregisterNavigateAwayCallback,
 		getObjFromHash: _getObjFromHash,
-		setRoutes: function(routes){ _my.routes = routes; },
-		setControllers: function(controllers){ _my.controllers = controllers; }
+		routes: routes,
+		controllers: controllers,
+		navigateAwayCallback: navigateAwayCallback
 	};
 })(routeMatcher);
