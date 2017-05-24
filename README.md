@@ -59,9 +59,23 @@ router.route();
 ## API
 
 ### route()
+
+Routes based on current hash. Returns true if a match was found, false otherwise. `navigateAwayCallback` is ignored.
+Returns true if there was a match, false otherwise.
+
 ### status()
-### go2(id {string}, params {object}, doNotRoute {boolean})
+
+Returns an object which represents the current hash.
+
+### go2(id {string}, params {object}, doNotRoute {boolean=})
+
+Changes the hash, which then is handled by onHashChange, which calls the controller.
+- `doNotRoute` is optional. If true, the hash is changed **without** calling any matching controller, and `navigateAwayCallback` is ignored.
+
 ### getObjFromHash(hash {string})
+
+## Properities
+
 ### routes {object}
 ### controllers {object}
 ### navigateAwayCallback {function}
