@@ -7,8 +7,19 @@ A simple yet robust router for your javascript routing pleasure. Please route re
 // Instantiate and initialize. binds to window.onhashchange
 var router = new Router();
 
-// Route by reading from page hash and finding a match in Router.routes.
-router.route();
+// Set routes
+router.routes = {
+  'Tasks': 'tasks',
+  'Task': 'task/:id',
+  'Search': 'search/:keyword/:sortBy'
+};
+
+// Set controllers
+router.controllers = {
+  'Tasks': function(map){ ... },
+  'Task': function(map){ ... },
+  'Search': function(map){ ... }
+};
 
 // Route to specified route, by key (calls the appropriate controller).
 router.go2('Task', {id: 123});
@@ -16,12 +27,8 @@ router.go2('Task', {id: 123});
 // Change hash on page to specified route, but do not actually route (does not call the controller).
 router.go2('Task', {id: 123}, true);
 
-// Set routes
-router.routes = {
-  'Tasks': 'tasks',
-  'Task': 'task/:id',
-  'Search': 'search/:keyword/:sortBy'
-};
+// Route by reading from page hash and finding a match in Router.routes.
+router.route();
 
 ```
 
