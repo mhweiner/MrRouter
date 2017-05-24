@@ -55,3 +55,9 @@ in this repo at ba-routematcher.js. There are no other dependencies.
 var router = new Router();
 router.route();
 ```
+
+## API
+
+## Route matching
+
+For more details on how we match routes to/from hashes, please [see the documentation for RouteMatcher](https://github.com/cowboy/javascript-route-matcher).
