@@ -60,11 +60,11 @@ router.route();
 
 ### route()
 ### status()
-### go2()
-### getObjFromHash()
-### routes
-### controllers
-### navigateAwayCallback
+### go2(id {string}, params {object}, doNotRoute {boolean})
+### getObjFromHash(hash {string})
+### routes {object}
+### controllers {object}
+### navigateAwayCallback {function}
 
 ## Route matching
 
