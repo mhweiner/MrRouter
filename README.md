@@ -1,5 +1,5 @@
 # router.js
-A simple yet robust router for your javascript routing pleasure. Please route responsibly.
+A simple and lightweight yet robust router for your javascript routing pleasure. Please route responsibly.
 
 ## Example Usage
 
