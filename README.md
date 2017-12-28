@@ -43,10 +43,10 @@ router.getObjFromHash('task/123'); //returns {id: 'Task', params: {id: 123}}
 
 ```
 
-## Installation
+## Installation & Dependencies
 
 router.js requires Ben Alman's RouteMatcher (https://github.com/cowboy/javascript-route-matcher), which is included
-in this repo at ba-routematcher.js. There are no other dependencies.
+in this repo (ba-routematcher.js). There are no other dependencies.
 
 ```
 <script src="ba-routematcher.js"></script>
