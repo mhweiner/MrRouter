@@ -93,9 +93,9 @@ match was found.
 
 ## Properities
 
-### routes {object}
-### controllers {object}
-### navigateAwayCallback {function}
+### `mr.routes` {object}
+### `mr.controllers` {object}
+### `mr.navigateAwayCallback` {function}
 
 ## Route matching
 
