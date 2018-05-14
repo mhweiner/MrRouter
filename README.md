@@ -43,8 +43,6 @@ mr.getObjFromHash('task/123'); //returns {id: 'Task', params: {id: 123}}
 
 ## Installation
 
-### Using npm and ES6 import
-
 ```
 npm i mr-router
 ```
