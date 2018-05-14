@@ -7,16 +7,16 @@ A simple and lightweight router for use in the browser. Great with React or othe
 
 // Set routes
 mr.routes = {
-  'Tasks': 'tasks',
-  'Task': 'task/:id',
-  'Search': 'search/:keyword/:sortBy'
+  Tasks: 'tasks',
+  Task: 'task/:id',
+  Search: 'search/:keyword/:sortBy'
 };
 
 // Set controllers
 mr.controllers = {
-  'Tasks': function(map){ ... },
-  'Task': function(map){ ... },
-  'Search': function(map){ ... }
+  Tasks: function(map){ ... },
+  Task: function(map){ ... },
+  Search: function(map){ ... }
 };
 
 // Route to specified route, by key (calls the appropriate controller).
@@ -29,7 +29,7 @@ mr.go2('Task', {id: 123}, true);
 mr.route();
 
 // Register a callback when hash changes
-mr.navigateAwayCallback = function(){
+mr.navigateAwayCallback = function() {
   return confirm('Are you sure you want to leave?');
 };
 
@@ -43,13 +43,13 @@ mr.getObjFromHash('task/123'); //returns {id: 'Task', params: {id: 123}}
 
 ## Installation
 
-```
+```bash
 npm i mr-router
 ```
 
 Then import to include in your webpack build:
 
-```
+```js
 import mr from 'mr-router'
 
 \\do things with mr here
@@ -60,13 +60,13 @@ mr.route();
 
 See the [Releases](https://github.com/mhweiner/mr-router/releases)..
 
-```
+```html
 <script src="mr-router.production.min.js">
 ```
 
 To access Mr. Router once initiated:
 
-```
+```js
 var mr = window.MrRouter;
 
 mr.route(); //or whatevs
