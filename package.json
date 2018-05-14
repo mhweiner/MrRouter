@@ -1,7 +1,7 @@
 {
   "name": "mr-router",
   "description": "A simple and lightweight router for use in the browser. Great with React or other front-end application frameworks.",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "main": "src/index.js",
   "repository": {
     "type": "git",
