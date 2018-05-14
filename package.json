@@ -1,19 +1,19 @@
 {
-  "name": "MrRouter",
-  "description": "A simple and lightweight yet robust front-end router for your javascript routing pleasure.",
+  "name": "mr-router",
+  "description": "A simple and lightweight router for use in the browser. Great with React or other front-end application frameworks.",
   "version": "1.0.0",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mhweiner/MrRouter.git"
+    "url": "https://github.com/mhweiner/mr-router.git"
   },
   "keywords": [],
   "author": "Marc H. Weiner (http://mhweiner.com)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mhweiner/MrRouter/issues"
+    "url": "https://github.com/mhweiner/mr-router/issues"
   },
-  "homepage": "https://github.com/mhweiner/MrRouter",
+  "homepage": "https://github.com/mhweiner/mr-router",
   "dependencies": {
     "window-or-global": "^1.0.1"
   },
