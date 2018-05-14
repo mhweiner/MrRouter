@@ -7,18 +7,18 @@ Built using Ben "Cowboy" Allman's super awesome [JavaScript Basic Route Matcher]
 
 ```javascript
 // Set routes
-mr.routes = {
+mr.setRoutes({
   Tasks: 'tasks',
   Task: 'task/:id',
   Search: 'search/:keyword/:sortBy'
-};
+});
 
 // Set controllers
-mr.controllers = {
+mr.setControllers({
   Tasks: function(map){ ... },
   Task: function(map){ ... },
   Search: function(map){ ... }
-};
+});
 
 // Route to specified route, by key (calls the appropriate controller).
 mr.go2('Task', {id: 123});
@@ -30,12 +30,10 @@ mr.go2('Task', {id: 123}, true);
 mr.route();
 
 // Register a callback when hash changes
-mr.navigateAwayCallback = function() {
-  return confirm('Are you sure you want to leave?');
-};
+mr.setOnHashChange(confirm('Are you sure you want to leave?'));
 
 // Un-register callback
-mr.navigateAwayCallback = null;
+mr.setOnHashChange(null);
 
 // Get route object from hash, if match is found
 mr.getObjFromHash('task/123'); //returns {id: 'Task', params: {id: 123}}
@@ -88,11 +86,37 @@ Changes the hash, which then is handled by onHashChange, which calls the control
 Given the specified hash string, if a match was found in Router.routes, it returns an object, ex: `{id: 'blah', params:{}}`. Returns false if no
 match was found.
 
-## Properities
+### `setRoutes(map {object})`
 
-### `routes` {object}
-### `controllers` {object}
-### `navigateAwayCallback` {function}
+Sets or adds the routes given. Will override if any duplicates are present. It `extends` the route map with `Object.assign()`.
+
+```
+mr.setRoutes({foo: 'bar'});
+mr.setRoutes({boo: 'nar'});
+mr.getRoutes(); // {foo: 'bar', boo: 'nar'}
+```
+
+### `setControllers(map {object})`
+
+Sets or adds the controllers given. Will override if any duplicates are present. It `extends` the route map with `Object.assign()`.
+
+```
+mr.setControllers({foo: [function]});
+mr.setControllers({boo: [function]});
+mr.getControllers(); // {foo: [function], boo: [function]}
+```
+
+### `setOnHashChange([function])`
+
+Sets a callback to fire on hash changes. If that callback returns `false`, then the hash change is undone (`window.history.go(-1)` is called). This is great for preventing loss of unsaved changes in a dialog box, for example.
+
+### `clearRoutes()`
+
+Clears the routes.
+
+### `clearControllers()`
+
+Clears the controllers.
 
 ## Route matching
 

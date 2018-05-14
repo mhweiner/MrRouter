@@ -2,7 +2,7 @@ import rm from '../vendor/ba-routematcher'
 
 function Router() {
 
-  let navigateAwayCallback = null,
+  let onHashChangeUserSuppliedCallback = null,
     ignoreHashChange = false,
     controllers = {},
     routes = [];
@@ -43,8 +43,8 @@ function Router() {
     if (!hash) {
       throw("Undefined route '" + id + "'");
     }
-    let rm = rm(hash);
-    return rm.stringify(params || {});
+    let matched = rm(hash);
+    return matched.stringify(params || {});
   }
 
   /**
@@ -85,12 +85,8 @@ function Router() {
         return;
       }
 
-      if(navigateAwayCallback && typeof navigateAwayCallback !== 'function'){
-        throw 'navigateAwayCallback must be a function';
-      }
-
-      if(navigateAwayCallback){
-        if(!navigateAwayCallback()){
+      if(typeof onHashChangeUserSuppliedCallback === 'function'){
+        if(!onHashChangeUserSuppliedCallback()){
           //halt if callback returns false, and go back to the previous route
           ignoreHashChange = true;
           window.history.go(-1);
@@ -178,6 +174,10 @@ function Router() {
     controllers = [];
   }
 
+  function setOnHashChange(fn) {
+    onHashChangeUserSuppliedCallback = fn;
+  }
+
   init();
 
   return {
@@ -191,7 +191,7 @@ function Router() {
     getControllers,
     clearRoutes,
     clearControllers,
-    navigateAwayCallback
+    setOnHashChange
   };
 
 }
