@@ -61,13 +61,8 @@ See the [Releases](https://github.com/mhweiner/mr-router/releases).
 ```html
 <script src="mr-router.production.min.js">
 ```
-
-To access Mr. Router once initiated:
-
 ```javascript
-var mr = window.MrRouter;
-
-mr.route(); //or whatevs
+MrRouter.route(); //or whatever's clever
 ```
 
 ## API
