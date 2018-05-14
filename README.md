@@ -97,3 +97,11 @@ match was found.
 ## Route matching
 
 For more details on how we match routes to/from hashes, please [see the documentation for RouteMatcher](https://github.com/cowboy/javascript-route-matcher).
+
+## License
+
+[MIT](https://github.com/mhweiner/mr-router/blob/master/LICENSE). Free to use in all your things!
+
+## Contribution
+
+DO IT! PR's welcome.
