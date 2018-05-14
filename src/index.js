@@ -1,7 +1,7 @@
 import rm from '../vendor/ba-routematcher'
 import root from 'window-or-global'
 
-export default function() {
+function Router() {
 
   let navigateAwayCallback = null,
     ignoreHashChange = false,
@@ -155,8 +155,9 @@ export default function() {
     root.onhashchange = onHashChange;
   }
 
+  init();
+
   return {
-    init,
     route,
     status,
     go2,
@@ -167,3 +168,18 @@ export default function() {
   };
 
 }
+
+function setup() {
+
+  /* This creates a singleton, instantiating on root (window). */
+
+  //do not bind twice
+  if (root.MrRouter) return root.MrRouter;
+
+  root.MrRouter = new Router();
+
+}
+
+setup();
+
+export default root.MrRouter
