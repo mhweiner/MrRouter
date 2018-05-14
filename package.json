@@ -23,6 +23,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build-prod": "webpack index=./src/index.js --output-path='./dist' --output-filename='MrRouter.production.min.js' --mode production"
+    "build-prod": "webpack index=./src/index.js --output-path='./dist' --output-filename='MrRouter.production.min.js' --mode production",
+    "build-dev": "webpack index=./src/index.js --output-path='./dist' --output-filename='MrRouter.development.js' --mode development"
   }
 }
