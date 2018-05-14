@@ -1,6 +1,8 @@
 # Mr. Router
 A simple and lightweight router for use in the browser. Great with React or other front-end application frameworks. Supports callbacks for navigating away from hash changes to prevent change from occurring, and more.
 
+Built using Ben "Cowboy" Allman's super awesome and tight [JavaScript Basic Route Matcher](https://github.com/cowboy/javascript-route-matcher).
+
 ## Example Usage
 
 ```javascript
