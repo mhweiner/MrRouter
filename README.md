@@ -4,7 +4,6 @@ A simple and lightweight router for use in the browser. Great with React or othe
 ## Example Usage
 
 ```javascript
-
 // Set routes
 mr.routes = {
   Tasks: 'tasks',
@@ -38,7 +37,6 @@ mr.navigateAwayCallback = null;
 
 // Get route object from hash, if match is found
 mr.getObjFromHash('task/123'); //returns {id: 'Task', params: {id: 123}}
-
 ```
 
 ## Installation
