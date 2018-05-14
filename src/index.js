@@ -1,4 +1,4 @@
-import rm from '../vendor/ba-routematcher'
+const rm = require('../vendor/ba-routematcher.js');
 
 function Router() {
 
