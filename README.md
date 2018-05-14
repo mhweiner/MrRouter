@@ -56,7 +56,7 @@ mr.route();
 
 ### Manual Installation
 
-See the [Releases](https://github.com/mhweiner/mr-router/releases)..
+See the [Releases](https://github.com/mhweiner/mr-router/releases).
 
 ```html
 <script src="mr-router.production.min.js">
