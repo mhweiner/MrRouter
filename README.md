@@ -68,7 +68,11 @@ See the Releases.
 
 To access Mr. Router once initiated:
 
-window.MrRouter
+```
+var mr = window.MrRouter;
+
+mr.route(); //or whatevs
+```
 
 ## API
 
