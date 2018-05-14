@@ -100,10 +100,8 @@ For more details on how we match routes to/from hashes, please [see the document
 
 ## License
 
-[MIT](https://github.com/mhweiner/mr-router/blob/master/LICENSE).
-
-Free to use in all your things!
+[MIT](https://github.com/mhweiner/mr-router/blob/master/LICENSE). Free to use in all your things!
 
 ## Contribution
 
-Do it! PR's welcome.
+DO IT! PR's welcome.
