@@ -63,7 +63,7 @@ mr.route();
 See the Releases.
 
 ```
-<script src="MrRouter.production.min.js" type="text/javascript"\>
+<script src="mr-router.production.min.js">
 ```
 
 To access Mr. Router once initiated:
