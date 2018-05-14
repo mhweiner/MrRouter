@@ -3,7 +3,7 @@ A simple and lightweight router for use in the browser. Great with React or othe
 
 ## Example Usage
 
-```js
+```javascript
 
 // Set routes
 mr.routes = {
@@ -49,7 +49,7 @@ npm i mr-router
 
 Then import to include in your webpack build:
 
-```js
+```javascript
 import mr from 'mr-router'
 
 \\do things with mr here
@@ -66,7 +66,7 @@ See the [Releases](https://github.com/mhweiner/mr-router/releases)..
 
 To access Mr. Router once initiated:
 
-```js
+```javascript
 var mr = window.MrRouter;
 
 mr.route(); //or whatevs
