@@ -27,6 +27,7 @@ mr.go2('Task', {id: 123});
 mr.go2('Task', {id: 123}, true);
 
 // Route by reading from page hash and finding a match in Router.routes.
+// If a match is found, returns `true`. Otherwise, it returns `false`.
 mr.route();
 
 // Register a callback when hash changes
@@ -69,8 +70,7 @@ MrRouter.route(); //or whatever's clever
 
 ### `route()`
 
-Routes based on current hash. Returns true if a match was found, false otherwise. `navigateAwayCallback` is ignored.
-Returns true if there was a match, false otherwise.
+Routes based on current hash. Returns `true` if there was a match, `false` otherwise. Any callbacks set using `setOnHashChange` are ignored.
 
 ### `status()`
 
