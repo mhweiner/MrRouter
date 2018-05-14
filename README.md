@@ -46,7 +46,7 @@ mr.getObjFromHash('task/123'); //returns {id: 'Task', params: {id: 123}}
 ### Using npm and ES6 import
 
 ```
-npm install mr-router
+npm i mr-router
 ```
 
 Then import to include in your webpack build:
