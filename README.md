@@ -1,60 +1,74 @@
-# router.js
-A simple and lightweight yet robust router for your javascript routing pleasure. Please route responsibly.
+# Mr. Router
+A simple and lightweight router for use in the browser. Great with React or other front-end application frameworks. Supports callbacks for navigating away from hash changes to prevent change from occurring, and more.
 
 ## Example Usage
 
 ```js
-// Instantiate and initialize. binds to window.onhashchange
-var router = new Router();
 
 // Set routes
-router.routes = {
+mr.routes = {
   'Tasks': 'tasks',
   'Task': 'task/:id',
   'Search': 'search/:keyword/:sortBy'
 };
 
 // Set controllers
-router.controllers = {
+mr.controllers = {
   'Tasks': function(map){ ... },
   'Task': function(map){ ... },
   'Search': function(map){ ... }
 };
 
 // Route to specified route, by key (calls the appropriate controller).
-router.go2('Task', {id: 123});
+mr.go2('Task', {id: 123});
 
 // Change hash on page to specified route, but do not actually route (does not call the controller).
-router.go2('Task', {id: 123}, true);
+mr.go2('Task', {id: 123}, true);
 
 // Route by reading from page hash and finding a match in Router.routes.
-router.route();
+mr.route();
 
 // Register a callback when hash changes
-router.navigateAwayCallback = function(){
+mr.navigateAwayCallback = function(){
   return confirm('Are you sure you want to leave?');
 };
 
 // Un-register callback
-router.navigateAwayCallback = null;
+mr.navigateAwayCallback = null;
 
 // Get route object from hash, if match is found
-router.getObjFromHash('task/123'); //returns {id: 'Task', params: {id: 123}}
+mr.getObjFromHash('task/123'); //returns {id: 'Task', params: {id: 123}}
 
 ```
 
-## Installation & Dependencies
+## Installation
 
-router.js requires Ben Alman's RouteMatcher (https://github.com/cowboy/javascript-route-matcher), which is included
-in this repo (ba-routematcher.js). There are no other dependencies.
+### Using npm and ES6 import
 
 ```
-<script src="ba-routematcher.js"></script>
-<script src="router.js"></script>
-
-var router = new Router();
-router.route();
+npm install mr-router
 ```
+
+Then import to include in your webpack build:
+
+```
+import mr from 'mr-router'
+
+\\do things with mr here
+mr.route();
+```
+
+### Manual Installation
+
+See the Releases.
+
+```
+<script src="MrRouter.production.min.js" type="text/javascript"\>
+```
+
+To access Mr. Router once initiated:
+
+window.MrRouter
 
 ## API
 

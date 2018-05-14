@@ -155,9 +155,8 @@ export default function() {
     root.onhashchange = onHashChange;
   }
 
-  init();
-
   return {
+    init,
     route,
     status,
     go2,
