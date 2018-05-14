@@ -88,9 +88,9 @@ match was found.
 
 ## Properities
 
-### `mr.routes` {object}
-### `mr.controllers` {object}
-### `mr.navigateAwayCallback` {function}
+### `routes` {object}
+### `controllers` {object}
+### `navigateAwayCallback` {function}
 
 ## Route matching
 
