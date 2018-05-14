@@ -60,8 +60,8 @@ function Router() {
 
     for (let k in routes) {
       if (routes.hasOwnProperty(k)) {
-        let rm = rm(routes[k]);
-        let p = rm.parse(hash);
+        let matched = rm(routes[k]);
+        let p = matched.parse(hash);
         if (p !== null) {
           return {id:k, params:p};
         }
@@ -115,7 +115,7 @@ function Router() {
    * @param params
    * @param {boolean=} doNotRoute //change the hash without actually routing
    */
-  function go2(id, params, doNotRoute) {
+  function go(id, params, doNotRoute) {
 
     let new_hash = _getHashFromObj(id, params || {});
     ignoreHashChange = doNotRoute;
@@ -183,7 +183,7 @@ function Router() {
   return {
     route,
     status,
-    go2,
+    go,
     getObjFromHash,
     setRoutes,
     getRoutes,
@@ -196,21 +196,6 @@ function Router() {
 
 }
 
-function setup() {
-
-  console.log('ROUTER BEING DEFINED');
-
-  /* This creates a singleton, instantiating on window (window). */
-
-  //do not bind twice
-  if (window.MrRouter) return window.MrRouter;
-
-  console.log('ROUTER BEING INSTANTIATED');
-
-  window.MrRouter = new Router();
-
-}
-
-setup();
+window.MrRouter = new Router();
 
 export default window.MrRouter
