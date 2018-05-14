@@ -50,7 +50,7 @@ Then import to include in your webpack build:
 ```javascript
 import mr from 'mr-router'
 
-\\do things with mr here
+//do things with mr here
 mr.route();
 ```
 
