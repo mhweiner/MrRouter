@@ -1,5 +1,4 @@
 import rm from '../vendor/ba-routematcher'
-import root from 'window-or-global'
 
 function Router() {
 
@@ -12,8 +11,8 @@ function Router() {
    * @returns {*}
    */
   function getHash(){
-    if (root.location.hash) {
-      return root.location.hash.substring(1);
+    if (window.location.hash) {
+      return window.location.hash.substring(1);
     } else {
       return false;
     }
@@ -94,7 +93,7 @@ function Router() {
         if(!navigateAwayCallback()){
           //halt if callback returns false, and go back to the previous route
           ignoreHashChange = true;
-          root.history.go(-1);
+          window.history.go(-1);
           return;
         }
       }
@@ -126,11 +125,11 @@ function Router() {
     ignoreHashChange = doNotRoute;
 
     //if the hashes are the same, just ignore.
-    if(new_hash === root.location.hash.replace('#','')){
+    if(new_hash === window.location.hash.replace('#','')){
       return;
     }
 
-    root.location.hash = new_hash;
+    window.location.hash = new_hash;
   }
 
   /**
@@ -152,7 +151,31 @@ function Router() {
    * Bind onhashchange to window
    */
   function init() {
-    root.onhashchange = onHashChange;
+    window.onhashchange = onHashChange;
+  }
+
+  function setRoutes(map) {
+    Object.assign(routes, map);
+  }
+
+  function getRoutes() {
+    return routes;
+  }
+
+  function setControllers(map) {
+    Object.assign(controllers, map);
+  }
+
+  function getControllers() {
+    return controllers;
+  }
+
+  function clearRoutes() {
+    routes = [];
+  }
+
+  function clearControllers() {
+    controllers = [];
   }
 
   init();
@@ -162,8 +185,12 @@ function Router() {
     status,
     go2,
     getObjFromHash,
-    routes,
-    controllers,
+    setRoutes,
+    getRoutes,
+    setControllers,
+    getControllers,
+    clearRoutes,
+    clearControllers,
     navigateAwayCallback
   };
 
@@ -171,15 +198,19 @@ function Router() {
 
 function setup() {
 
-  /* This creates a singleton, instantiating on root (window). */
+  console.log('ROUTER BEING DEFINED');
+
+  /* This creates a singleton, instantiating on window (window). */
 
   //do not bind twice
-  if (root.MrRouter) return root.MrRouter;
+  if (window.MrRouter) return window.MrRouter;
 
-  root.MrRouter = new Router();
+  console.log('ROUTER BEING INSTANTIATED');
+
+  window.MrRouter = new Router();
 
 }
 
 setup();
 
-export default root.MrRouter
+export default window.MrRouter

@@ -15,7 +15,6 @@
   },
   "homepage": "https://github.com/mhweiner/mr-router",
   "dependencies": {
-    "window-or-global": "^1.0.1"
   },
   "devDependencies": {
     "webpack": "^4.8.3",
