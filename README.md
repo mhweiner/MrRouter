@@ -21,10 +21,10 @@ mr.setControllers({
 });
 
 // Route to specified route, by key (calls the appropriate controller).
-mr.go2('Task', {id: 123});
+mr.go('Task', {id: 123});
 
 // Change hash on page to specified route, but do not actually route (does not call the controller).
-mr.go2('Task', {id: 123}, true);
+mr.go('Task', {id: 123}, true);
 
 // Route by reading from page hash and finding a match in Router.routes.
 // If a match is found, returns `true`. Otherwise, it returns `false`.
@@ -76,7 +76,7 @@ Routes based on current hash. Returns `true` if there was a match, `false` other
 
 Returns an object which represents the current hash.
 
-### `go2(id {string}, params {object}, doNotRoute {boolean=})`
+### `go(id {string}, params {object}, doNotRoute {boolean=})`
 
 Changes the hash, which then is handled by onHashChange, which calls the controller.
 - `doNotRoute` is optional. If true, the hash is changed **without** calling any matching controller, and `navigateAwayCallback` is ignored.
