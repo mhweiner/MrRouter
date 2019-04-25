@@ -37,7 +37,7 @@ function Router() {
 
     }
 
-    controller.call(id, params);
+    controller(id, params);
 
   }
 
