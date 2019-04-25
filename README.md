@@ -8,16 +8,14 @@ Built using Ben "Cowboy" Allman's super awesome [JavaScript Basic Route Matcher]
 ```javascript
 // Set routes
 mr.setRoutes({
-  Tasks: 'tasks',
-  Task: 'task/:id',
-  Search: 'search/:keyword/:sortBy'
+    Tasks: 'tasks',
+    Task: 'task/:id',
+    Search: 'search/:keyword/:sortBy'
 });
 
-// Set controllers
-mr.setControllers({
-  Tasks: function(map){ ... },
-  Task: function(map){ ... },
-  Search: function(map){ ... }
+// Set handlers
+mr.setController((route, params) => {
+    //do something
 });
 
 // Route to specified route, by key (calls the appropriate controller).

@@ -4,18 +4,24 @@ function Router() {
 
   let onHashChangeUserSuppliedCallback = null,
     ignoreHashChange = false,
-    controllers = {},
+    controller = null,
     routes = [];
 
   /**
    * @returns {*}
    */
-  function getHash(){
+  function getHash() {
+
     if (window.location.hash) {
+
       return window.location.hash.substring(1);
+
     } else {
+
       return false;
+
     }
+
   }
 
   /**
@@ -24,11 +30,15 @@ function Router() {
    * @private
    */
   function _callControllerFromObj(id, params) {
-    if (controllers[id]) {
-      controllers[id].call(undefined, params);
-    } else {
-      throw("router: controller[" + id + '] does not exist.');
+
+    if (!controller) {
+
+      throw('Controller is not set.');
+
     }
+
+    controller.call(id, params);
+
   }
 
   /**
@@ -106,7 +116,9 @@ function Router() {
    * @return {*}
    */
   function status() {
+
     return getObjFromHash(getHash());
+
   }
 
   /**
@@ -147,35 +159,39 @@ function Router() {
    * Bind onhashchange to window
    */
   function init() {
+
     window.onhashchange = onHashChange;
+
   }
 
   function setRoutes(map) {
+
     Object.assign(routes, map);
+
   }
 
   function getRoutes() {
+
     return routes;
+
   }
 
-  function setControllers(map) {
-    Object.assign(controllers, map);
-  }
+  function setController(fn) {
 
-  function getControllers() {
-    return controllers;
+    controller = fn;
+
   }
 
   function clearRoutes() {
-    routes = [];
-  }
 
-  function clearControllers() {
-    controllers = [];
+    routes = [];
+
   }
 
   function setOnHashChange(fn) {
+
     onHashChangeUserSuppliedCallback = fn;
+
   }
 
   init();
@@ -187,10 +203,8 @@ function Router() {
     getObjFromHash,
     setRoutes,
     getRoutes,
-    setControllers,
-    getControllers,
+    setController,
     clearRoutes,
-    clearControllers,
     setOnHashChange
   };
 
@@ -198,4 +212,4 @@ function Router() {
 
 window.MrRouter = new Router();
 
-export default window.MrRouter
+export default window.MrRouter;
