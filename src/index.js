@@ -49,12 +49,19 @@ function Router() {
    * @private
    */
   function _getHashFromObj(id, params) {
+
     let hash = routes[id];
+
     if (!hash) {
+
       throw("Undefined route '" + id + "'");
+
     }
+
     let matched = rm(hash);
+
     return matched.stringify(params || {});
+
   }
 
   /**
@@ -86,23 +93,29 @@ function Router() {
    */
   function onHashChange() {
 
+    if (ignoreHashChange) {
+
+      //ignore just once, then reset.
+      ignoreHashChange = false;
+      return;
+
+    }
+
+    if (typeof onHashChangeUserSuppliedCallback === 'function') {
+
+      if (onHashChangeUserSuppliedCallback() === false) {
+
+        //halt if callback returns false, and go back to the previous route
+        ignoreHashChange = true;
+        window.history.go(-1);
+        return;
+
+      }
+
+    }
+
     let o = getObjFromHash(getHash());
     if (o) {
-
-      if(ignoreHashChange){
-        //ignore just once, then reset.
-        ignoreHashChange = false;
-        return;
-      }
-
-      if(typeof onHashChangeUserSuppliedCallback === 'function'){
-        if(!onHashChangeUserSuppliedCallback()){
-          //halt if callback returns false, and go back to the previous route
-          ignoreHashChange = true;
-          window.history.go(-1);
-          return;
-        }
-      }
 
       _callControllerFromObj(o.id, o.params);
       return true;

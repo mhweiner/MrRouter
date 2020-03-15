@@ -29,7 +29,7 @@ mr.go('Task', {id: 123}, true);
 mr.route();
 
 // Register a callback when hash changes
-mr.setOnHashChange(confirm('Are you sure you want to leave?'));
+mr.setOnHashChange(() => confirm('Are you sure you want to leave?'));
 
 // Un-register callback
 mr.setOnHashChange(null);
